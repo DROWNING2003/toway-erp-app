@@ -1,11 +1,11 @@
 import { defineStore } from 'pinia'
 import type { RouteRecordName } from 'vue-router'
-import type { EnhancedRouteLocation } from '@/router/types'
+// import type { EnhancedRouteLocation } from '@/router/types'
 
 const useRouteCacheStore = defineStore('route-cache', () => {
   const routeCaches = ref<RouteRecordName[]>([])
 
-  const addRoute = (route: EnhancedRouteLocation) => {
+  const addRoute = (route) => {
     if (routeCaches.value.includes(route.name))
       return
 

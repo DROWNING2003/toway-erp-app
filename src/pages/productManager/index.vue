@@ -10,7 +10,7 @@ definePage({
   },
 })
 
-const route = useRoute()
+// const route = useRoute()
 const router = useRouter()
 
 function onBack() {
@@ -38,11 +38,11 @@ const ProductManager = reactive({
   }
 })
 
-const option = [
-  { text: '全部商品', value: 0 },
-  { text: '新款商品', value: 1 },
-  { text: '活动商品', value: 2 },
-];
+// const option = [
+//   { text: '全部商品', value: 0 },
+//   { text: '新款商品', value: 1 },
+//   { text: '活动商品', value: 2 },
+// ];
 
 onMounted(() => {
   ProductManager.reload()

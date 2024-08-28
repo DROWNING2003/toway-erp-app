@@ -3,7 +3,7 @@
 //     total:number;
 //     step:number;
 // }
-const input = defineModel()
+// const input = defineModel()
 
 
 

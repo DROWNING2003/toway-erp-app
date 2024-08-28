@@ -2,7 +2,7 @@
 import { storeToRefs } from 'pinia'
 import useAppStore from '@/stores/modules/app'
 import useRouteCache from '@/stores/modules/routeCache'
-import { useUserStore } from './stores/modules/user'
+// import { useUserStore } from './stores/modules/user'
 import useRouteTransitionNameStore from '@/stores/modules/routeTransitionName'
 import useAutoThemeSwitcher from '@/hooks/useAutoThemeSwitcher'
 

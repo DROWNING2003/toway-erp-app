@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { queryMateriel } from '@/api/Base/repositoryManager';
-
 definePage({
     name: 'productManager/ProductInfo',
     meta: {
@@ -9,15 +7,15 @@ definePage({
     },
 })
 
-const route = useRoute()
-const router = useRouter()
+// const route = useRoute()
+// const router = useRouter()
 
-function onBack() {
-    if (window.history.state.back)
-        history.back()
-    else
-        router.replace('/')
-}
+// function onBack() {
+//     if (window.history.state.back)
+//         history.back()
+//     else
+//         router.replace('/')
+// }
 
 // const ProductManager = reactive({
 //   search: {
@@ -46,7 +44,7 @@ function onBack() {
 // onMounted(()=>{
 //   ProductManager.reload()
 // })
-const load = ref(true)
+// const load = ref(true)
 </script>
 
 <template>
@@ -76,3 +74,4 @@ const load = ref(true)
     background: #FFFFFF;
 
 }
+</style>

@@ -4,7 +4,7 @@ import { routes } from 'vue-router/auto-routes'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 
-import type { EnhancedRouteLocation } from './types'
+// import type { EnhancedRouteLocation } from './types'
 import useRouteTransitionNameStore from '@/stores/modules/routeTransitionName'
 import useRouteCacheStore from '@/stores/modules/routeCache'
 
@@ -15,7 +15,7 @@ const router = createRouter({
   routes,
 })
 
-router.beforeEach((to: EnhancedRouteLocation, from, next) => {
+router.beforeEach((to, from, next) => {
   NProgress.start()
 
   const routeCacheStore = useRouteCacheStore()
