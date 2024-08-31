@@ -22,7 +22,7 @@ const props = defineProps({
 const parsedPhotoUrl = computed(() => JSON.parse(props.photoUrl));
 
 const imageProps = computed(() => ({
-  previewSrcList: parsedPhotoUrl.value.map(
+  previewSrcList: parsedPhotoUrl.value.map( 
     (item) => `${import.meta.env.VITE_APP_API_BASE_URL}/api/files/getFile?fileID=${item}`
   ),
 }));
@@ -30,7 +30,9 @@ const imageProps = computed(() => ({
 <template>
   <div class="relative">
     <h1 class="text-[#f84444] absolute top-0 right-0 p-6 text-center z-999">{{ props.waterMark!=""?props.waterMark:""}}</h1>
-    <van-image @click="()=>{
+    <van-image
+    :icon-size="props.width"
+    @click="()=>{ 
         showImagePreview(imageProps.previewSrcList)
     }" :width="props.width"  fit="cover" :height="props.height" :src="imageProps.previewSrcList[0]" />
   </div>
