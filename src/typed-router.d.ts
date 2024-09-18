@@ -32,6 +32,8 @@ declare module 'vue-router/auto-routes' {
     'library': RouteRecordInfo<'library', '/library', Record<never, never>, Record<never, never>>,
     'login': RouteRecordInfo<'login', '/login', Record<never, never>, Record<never, never>>,
     'mock': RouteRecordInfo<'mock', '/mock', Record<never, never>, Record<never, never>>,
+    'newoutput': RouteRecordInfo<'newoutput', '/newoutput', Record<never, never>, Record<never, never>>,
+    'output': RouteRecordInfo<'output', '/output', Record<never, never>, Record<never, never>>,
     'productInfo': RouteRecordInfo<'productInfo', '/ProductInfo', Record<never, never>, Record<never, never>>,
     'productInput': RouteRecordInfo<'productInput', '/productInput', Record<never, never>, Record<never, never>>,
     '/productInput/components/AddProduct': RouteRecordInfo<'/productInput/components/AddProduct', '/productInput/components/AddProduct', Record<never, never>, Record<never, never>>,
@@ -41,5 +43,6 @@ declare module 'vue-router/auto-routes' {
     'profile': RouteRecordInfo<'profile', '/profile', Record<never, never>, Record<never, never>>,
     'stockTacking': RouteRecordInfo<'stockTacking', '/stockTacking', Record<never, never>, Record<never, never>>,
     'unocss': RouteRecordInfo<'unocss', '/unocss', Record<never, never>, Record<never, never>>,
+    'updatearrive': RouteRecordInfo<'updatearrive', '/updatearrive', Record<never, never>, Record<never, never>>,
   }
 }

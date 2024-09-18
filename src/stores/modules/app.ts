@@ -5,9 +5,10 @@ export interface AppStore {
   switchMode: (val: ConfigProviderTheme) => void
 }
 
-const prefersDark
-= window.matchMedia
-&& window.matchMedia('(prefers-color-scheme: dark)').matches
+// const prefersDark
+// = window.matchMedia
+// && window.matchMedia('(prefers-color-scheme: dark)').matches
+const prefersDark = false
 
 const useAppStore = defineStore('app', () => {
   const theme = prefersDark ? 'dark' : 'light'

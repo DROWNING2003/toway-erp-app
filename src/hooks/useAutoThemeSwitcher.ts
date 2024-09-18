@@ -4,7 +4,7 @@ export default function useAutoThemeSwitcher(appStore: AppStore) {
   const handleAttributeChange = () => {
     const rootElement = document.documentElement
     if (rootElement.classList.contains('dark'))
-      appStore.switchMode('dark')
+      appStore.switchMode('light')
     else
       appStore.switchMode('light')
   }

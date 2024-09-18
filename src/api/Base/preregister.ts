@@ -24,6 +24,13 @@ export async function preregisterRegister(params?): Promise<any> {
 /**
  * @description: 查询登记(分页)
  */
-export async function queryPreregister(params?): Promise<any> {
-    return request.post('/api/preregister/queryPreregister', params)
+export async function queryPreregisterApp(params?): Promise<any> {
+    return request.post('/api/preregister/queryPreregisterApp', params)
+}
+
+/**
+ * @description: 更新预登记
+ */
+export async function updatePreregister(params?): Promise<any> {
+    return request.post('/api/preregister/updatePreregister', params)
 }

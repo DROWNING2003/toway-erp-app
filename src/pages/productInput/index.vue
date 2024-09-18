@@ -262,50 +262,78 @@ function addSN() {
               ProductInputObj.Product.serialList.splice(index, 1)
             }" class="w-16 h-16 c-[#ff4000]" />{{ item }}
           </div>
-         
+
         </div>
-      
+
         <StepBottom v-show="!inputData.showType" v-model="inputData">
-            <template #default>
-              <div>
-                <span class="step-bottom-h2" @click="() => {
-                  // input.value.step+=1
-                  console.log(inputData.value--);
-                  console.log(inputData.value);
-
-                }">返回上一步</span>
-              </div>
-
-              <el-button class="step-bottom-button flex flex-col justify-center items-center text-white" @click="() => {
-                putRepairPreregister({
-                  // preregisterNumber: input.RegistrationNo,
-                  photoList: ProductInputObj.Product.photoList,
-                  serialNumber: ProductInputObj.Product.serialList,
-                  deviceName: ProductInputObj.Product.productName,
-                  businessStatus: ProductInputObj.Product.businessStatus == '正常' ? 1 : ProductInputObj.Product.businessStatus == '保修' ? 2 : 3,
-                  // customerFeedback: input.customerFeedback,
-                  brand: ProductInputObj.Product.brand,
-                  faultMessage: ProductInputObj.Product.faultMessage,
-                  quantity: ProductInputObj.Product.quantity,
-                  remark: ProductInputObj.Product.remark,
-                  customerID: ProductInputObj.model.SelectCustomer.customer.nCustomerId,
-                })
-                console.log(inputData.value++);
+          <template #default>
+            <div>
+              <span class="step-bottom-h2" @click="() => {
+                // input.value.step+=1
+                console.log(inputData.value--);
                 console.log(inputData.value);
-              }">确认创建</el-button>
-            </template>
-          </StepBottom>
-          <van-field v-model="ProductInputObj.Product.faultMessage" class="rounded-[10px]" rows="2" autosize
+
+              }">返回上一步</span>
+            </div>
+
+            <el-button class="step-bottom-button flex flex-col justify-center items-center text-white" @click="() => {
+              putRepairPreregister({
+                // preregisterNumber: input.RegistrationNo,
+                photoList: ProductInputObj.Product.photoList,
+                serialNumber: ProductInputObj.Product.serialList,
+                deviceName: ProductInputObj.Product.productName,
+                businessStatus: ProductInputObj.Product.businessStatus == '正常' ? 1 : ProductInputObj.Product.businessStatus == '保修' ? 2 : 3,
+                // customerFeedback: input.customerFeedback,
+                brand: ProductInputObj.Product.brand,
+                faultMessage: ProductInputObj.Product.faultMessage,
+                quantity: ProductInputObj.Product.quantity,
+                remark: ProductInputObj.Product.remark,
+                customerID: ProductInputObj.model.SelectCustomer.customer.nCustomerId,
+              })
+              console.log(inputData.value++);
+              console.log(inputData.value);
+            }">确认创建</el-button>
+          </template>
+        </StepBottom>
+        <van-field v-model="ProductInputObj.Product.faultMessage" class="rounded-[10px]" rows="2" autosize
           label="客描故障/要求" type="textarea" maxlength="50" placeholder="请输入留言" show-word-limit />
       </div>
       <div v-if="inputData.type == '采购物料'" name="采购物料" class="gap-[10px] flex flex-col py-[20px]">
         <van-field class="rounded-[10px] h-[60px] flex items-center"
           v-model="ProductInputObj.model.SelectProcurement.Procurement.sPurchaseName" is-link readonly label="绑定采购"
           placeholder="采购单" @click="ProductInputObj.model.SelectProcurement.show = true" />
-        <!-- <SelectCustomer v-model:customer="ProductInputObj.model.SelectCustomer.customer"
-          v-model:show="ProductInputObj.model.SelectCustomer.show" /> -->
         <SelectProcurement v-model:show="ProductInputObj.model.SelectProcurement.show"
           v-model:procurement="ProductInputObj.model.SelectProcurement.Procurement" />
+          {{ProductInputObj.model.SelectProcurement.Procurement.sPurchaseNumber}}
+          <StepBottom v-show="!inputData.showType" v-model="inputData">
+          <template #default>
+            <div>
+              <span class="step-bottom-h2" @click="() => {
+                // input.value.step+=1
+                console.log(inputData.value--);
+                console.log(inputData.value);
+
+              }">返回上一步</span>
+            </div>
+
+            <el-button class="step-bottom-button flex flex-col justify-center items-center text-white" @click="() => {
+              preregisterRegister(
+                {
+                  photoFileId: JSON.stringify(ProductInputObj.Product.photoList),
+                  type: 3,
+                  orderNo: ProductInputObj.model.SelectProcurement.Procurement.sPurchaseNumber,
+                  customerId: '',
+                  customerRemark: '',
+                  count: ProductInputObj.Product.quantity
+                }
+              ).then(res => {
+              if (res.code == 0) {
+                inputData.value++
+              }
+            })
+            }">确认创建</el-button>
+          </template>
+        </StepBottom>
       </div>
       <div v-if="inputData.type == 'PCB订单'" name="PCB订单" class="gap-[10px] flex flex-col py-[20px]">
         <van-field class="rounded-[10px] h-[60px] flex items-center"
