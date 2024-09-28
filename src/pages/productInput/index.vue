@@ -304,8 +304,8 @@ function addSN() {
           placeholder="采购单" @click="ProductInputObj.model.SelectProcurement.show = true" />
         <SelectProcurement v-model:show="ProductInputObj.model.SelectProcurement.show"
           v-model:procurement="ProductInputObj.model.SelectProcurement.Procurement" />
-          {{ProductInputObj.model.SelectProcurement.Procurement.sPurchaseNumber}}
-          <StepBottom v-show="!inputData.showType" v-model="inputData">
+        {{ ProductInputObj.model.SelectProcurement.Procurement.sPurchaseNumber }}
+        <StepBottom v-show="!inputData.showType" v-model="inputData">
           <template #default>
             <div>
               <span class="step-bottom-h2" @click="() => {
@@ -327,10 +327,10 @@ function addSN() {
                   count: ProductInputObj.Product.quantity
                 }
               ).then(res => {
-              if (res.code == 0) {
-                inputData.value++
-              }
-            })
+                if (res.code == 0) {
+                  inputData.value++
+                }
+              })
             }">确认创建</el-button>
           </template>
         </StepBottom>

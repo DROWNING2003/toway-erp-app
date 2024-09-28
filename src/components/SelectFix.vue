@@ -1,5 +1,7 @@
 <script setup>
 import { queryCustomer } from '@/api/Base/business';
+import { queryRepairTaskByApp } from '@/api/Base/fix';
+import { format } from 'date-fns';
 
 const show = defineModel("show", {
     default: true
@@ -11,9 +13,13 @@ const selectFix = reactive({
     name: "",
     list: [],
     reload: () => {
-        queryCustomer({
+        queryRepairTaskByApp({
             "page": 1,
-            "pageSize": 999999999
+            "pageSize": 9999999,
+            "searchKeyword": selectFix.name,
+            "status": 0,
+            "startTime": "1975-06-11",
+            "endTime": "9999-01-11"
         }).then(res => {
             if (res.code == 0) {
                 selectFix.list = res.data.list
@@ -39,7 +45,7 @@ function connect(item) {
         return item.sPersonalMail
     }
 }
-onMounted(()=>{
+onMounted(() => {
     selectFix.reload()
 })
 </script>
@@ -53,19 +59,22 @@ onMounted(()=>{
 
             <div class="border bg-white gap-10 rounded-[10px] p-10 flex" v-for="(item, index) in selectFix.list"
                 :key="index">
-              
+
                 <van-checkbox @click="() => {
                     fix = item
                     show = false
-                    
+
                 }" v-model="item.check" class="rounded-full"></van-checkbox>
                 <div>
-                    <!-- {{ item }} -->
-                    <h1 class="text-[14px] leading-[0px] mx-0 text">{{ item.companySName }}</h1>
+                    <div class="text-[14px]">{{ item.preregisterNumber  }}</div>
+                    <div class="text-[14px]">{{ item.status  }}</div>
+                    <div class="text-[14px]">{{ format(new Date(item.creationDatetime),"yyyy-MM-dd") }}</div>
+                    <h1 class="text-[14px] leading-[0px] mx-0 text">{{ item.deviceName }}-{{ item.brand }}</h1>
                     <div class="flex items-center gap-10">
-                        <div class="text-[12px]">{{ item.sNameCn ? item.sNameCn : item.sNameEn }}</div>
-                        <h1 class="text-[12px] text-dark">{{ connect(item) }}</h1>
+                        <div class="text-[12px]">{{ item.customer.sNameCn ? item.customer.sNameCn : item.customer.sNameEn }}</div>
+                        <h1 class="text-[12px] text-dark">{{ connect(item.customer) }}</h1>
                     </div>
+                    
                     <div class="text-[14px]">{{ item.departmentName }}</div>
                 </div>
             </div>
